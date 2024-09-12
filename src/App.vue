@@ -38,7 +38,7 @@ function prevImage() {
 <template>
   <div>
     <!-- Counter Section -->
-    <p>Counter: {{ count }}</p>
+    <p class="p1">Counter: {{ count }}</p>
     <button @click="increment">Tambah</button>
     
     <!-- Box Color Section -->
@@ -48,27 +48,48 @@ function prevImage() {
     <!-- Image Carousel Section -->
     <div class="carousel">
       <img :src="images[currentImageIndex]" alt="carousel image" />
-      <div>
-        <button @click="prevImage">Previous</button>
-        <button @click="nextImage">Next</button>
+      <div class="carousel-buttons">
+        <button class="prev" @click="prevImage">Previous</button>
+        <button class="next" @click="nextImage">Next</button>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style>
 div {
+  margin: 0%;
   text-align: center;
-  margin-top: 2rem;
+  justify-content: center;
+}
+
+#app {
+  display: block;
+  grid-template-rows: none;
+  grid-template-columns: none;
+  gap: 0;
+}
+
+.p1 {
+  padding-top: 20px;
+  color: white;
+  font-weight: medium;
+  font-size: medium;
 }
 
 button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
+  display: inline-block;
   color: white;
   background-color: rgb(0, 185, 0);
-  border-radius: 10%;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: medium;
+  font-size: medium;
+}
+
+button:hover{
+  background-color: rgb(0, 161, 0);
 }
 
 div > div {
@@ -76,15 +97,40 @@ div > div {
 }
 
 .carousel {
+  position: relative;
   text-align: center;
   width: 500px;
-  margin-top: 10;
+  margin-top: 10px;
 }
 
 .carousel img {
+  margin: 20px auto;
   width: 100%;
   display: block;
   border-radius: 10px;
   transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-buttons {
+  width: 100%;
+  bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+}
+
+.prev, .next {
+  background-color: rgb(0, 185, 0);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: medium;
+  font-size: medium;
+  border: none;
+  cursor: pointer;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgb(0, 161, 0);
 }
 </style>
